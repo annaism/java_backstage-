@@ -6,8 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="sys-gateway" />
         <module name="sys-common" />
+        <module name="sys-usercenter" />
+        <module name="sys-epidemic-prevention" />
       </profile>
     </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="sys-epidemic-prevention" options="-parameters" />
+      <module name="sys-gateway" options="-parameters" />
+      <module name="sys-usercenter" options="-parameters" />
+    </option>
   </component>
 </project>

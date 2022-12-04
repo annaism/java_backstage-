@@ -10,6 +10,9 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>sys-common</module>
+        <module>sys-gateway</module>
+        <module>sys-usercenter</module>
+        <module>sys-epidemic-prevention</module>
     </modules>
 
     <properties>

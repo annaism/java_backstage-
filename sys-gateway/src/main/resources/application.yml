@@ -1,0 +1,28 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: sys-gateway
+  #nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+        - id: sys_userscenter_route
+          uri: lb://sys-usercenter
+          predicates:
+            - Path=/api/user/**,/user/**
+
+
+
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
