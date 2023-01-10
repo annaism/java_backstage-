@@ -11,10 +11,25 @@ spring:
         server-addr: localhost:8848
     gateway:
       routes:
-        - id: sys_userscenter_route
-          uri: lb://sys-usercenter
+        - id: sys_acl_route
+          uri: lb://sys-acl
           predicates:
             - Path=/api/user/**,/user/**
+
+        - id: sys_epidemic_prevention_route
+          uri: lb://sys-epidemic-prevention
+          predicates:
+            - Path=/api/disinfect/**,/api/reporting/**
+
+        - id: sys_daily_management_route
+          uri: lb://sys-daily-management
+          predicates:
+            - Path=/api/daily/**
+
+        - id: sys_material_route
+          uri: lb://sys-material
+          predicates:
+            - Path=/api/material/**,/api/materialtype/**,/api/order/**,/api/orderevaluate/**,/api/selfuse/**
 
 
 

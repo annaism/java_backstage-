@@ -11,8 +11,9 @@
     <modules>
         <module>sys-common</module>
         <module>sys-gateway</module>
-        <module>sys-usercenter</module>
+        <module>sys-acl</module>
         <module>sys-epidemic-prevention</module>
+        <module>sys-material</module>
     </modules>
 
     <properties>
