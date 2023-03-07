@@ -8,8 +8,8 @@ spring:
     port: 22
     username: root
     password: 'joker671327655.'
-    url: https://www.foranna.top/upload/
-    path: /data/ftp/image
+    url: https://www.foranna.top/images/
+    path: /usr/local/nginx/html/db
 
   application:
     name: sys-daily-management
@@ -28,7 +28,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 8.134.135.168:8848
   #数据库连接
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

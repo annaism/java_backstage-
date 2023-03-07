@@ -2,6 +2,9 @@ package com.joker.vo;
 
 import lombok.Data;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -11,6 +14,7 @@ import lombok.Data;
  */
 @Data
 public class LoginUser {
+
     private String account;
     private String password;
 }

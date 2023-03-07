@@ -2,6 +2,8 @@ package com.joker.vo;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -13,8 +15,9 @@ import java.io.Serializable;
  */
 @Data
 public class SelfUseVo implements Serializable {
-
+    @NotNull(message = "请选择需要删除的数据")
     private Long pageNum;
+    @NotNull(message = "当前页数量不能为空")
     private Long pageSize;
     private String materialName;
     private String typeName;

@@ -9,11 +9,17 @@ import com.joker.utils.FileUtils;
 import com.joker.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.io.InputStream;
+
+import static com.joker.constant.Constant.DEL_SUCCESS;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,9 +28,11 @@ import java.io.InputStream;
  * @Date: 2023/01/05/20:49
  * @Description:
  */
+@Validated
 @RestController
 @Slf4j
 @RequestMapping("/api/daily/")
+@ControllerAdvice
 public class ImageUploadController {
 
 
@@ -32,7 +40,8 @@ public class ImageUploadController {
     ISftpService iSftpService;
 
     @PostMapping("uploadImage")
-    public R uploadImage(MultipartFile file) throws JSchException, SftpException, IOException {
+    public R uploadImage(
+            @NotNull(message = "请选择文件")MultipartFile file) throws JSchException, SftpException, IOException {
         log.info(file.getOriginalFilename());
 
         FileUtils.uploadVerify(file);
@@ -47,10 +56,10 @@ public class ImageUploadController {
     @RequestMapping("delpic")
     public R delete(@RequestBody String[] picUrls){
         log.info("{{}}",picUrls);
-        boolean delete = iSftpService.delete(picUrls);
-        if( delete ){
-            return R.ok();
-        }
-        return R.error();
+        iSftpService.delete(picUrls);
+
+        R ok = R.ok();
+        ok.setMessage( DEL_SUCCESS.getMsg() );
+        return ok;
     }
 }

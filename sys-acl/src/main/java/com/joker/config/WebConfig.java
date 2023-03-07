@@ -1,8 +1,8 @@
 package com.joker.config;
 
 
-import com.joker.interceptor.LoginUserInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.joker.interceptor.LoginAndRefreshTokenInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -17,11 +17,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Autowired
-    private LoginUserInterceptor loginUserInterceptor;
+    @Bean
+    public LoginAndRefreshTokenInterceptor getRefreshTokenInterceptor(){
+        return new LoginAndRefreshTokenInterceptor();
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginUserInterceptor).addPathPatterns("/**").excludePathPatterns("/user/login");
+        registry.addInterceptor(getRefreshTokenInterceptor()).addPathPatterns("/**").excludePathPatterns(
+                "/api/user/check",
+                "/api/acl/permission/getassign",
+                "/api/user/toalassign");
     }
+
 }

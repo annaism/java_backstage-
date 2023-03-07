@@ -14,6 +14,8 @@
         <module>sys-acl</module>
         <module>sys-epidemic-prevention</module>
         <module>sys-material</module>
+        <module>sys-daily-management</module>
+        <module>sys-security</module>
     </modules>
 
     <properties>

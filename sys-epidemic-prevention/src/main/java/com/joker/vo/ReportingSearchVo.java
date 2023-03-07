@@ -3,6 +3,8 @@ package com.joker.vo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,7 +34,8 @@ public class ReportingSearchVo implements Serializable {
      */
     private String worker;
 
-
+    @NotNull(message = "当前页码不能为空")
     private Long page;   //当前页码
+    @NotNull(message = "当前页数量不能为空")
     private Long limit;  //当前页数量
 }

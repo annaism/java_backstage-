@@ -31,13 +31,14 @@ public class JwtUtils {
     //注意这里的sercet不是密码，而是进行三件套（salt+MD5+1024Hash）处理密码后得到的凭证
     public static String getJwtToken(UserVo user, String secret) {
         log.info("{{}}",secret);
-        Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
+//        Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
         Algorithm algorithm = Algorithm.HMAC256(secret);    //使用密钥进行哈希
         // 附带user信息的token
         return JWT.create()
-                .withClaim("user", JSON.toJSONString(user))
-                .withExpiresAt(date)  //过期时间
-                .sign(algorithm);     //签名算法
+                .withClaim("user", JSON.toJSONString(user))//签名算法
+                .sign(algorithm);
+//                .withExpiresAt(date)  //过期时间
+
     }
 
     /**
@@ -71,13 +72,13 @@ public class JwtUtils {
             return null;
         }
     }
-
-    /**
-     * 判断是否过期
-     */
-    public static boolean isExpire(String token){
-        DecodedJWT jwt = JWT.decode(token);
-        return jwt.getExpiresAt().getTime() < System.currentTimeMillis() ;
-    }
+//
+//    /**
+//     * 判断是否过期
+//     */
+//    public static boolean isExpire(String token){
+//        DecodedJWT jwt = JWT.decode(token);
+//        return jwt.getExpiresAt().getTime() < System.currentTimeMillis() ;
+//    }
 
 }

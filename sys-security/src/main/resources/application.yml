@@ -1,0 +1,46 @@
+server:
+  port: 8005
+
+spring:
+  application:
+    name: sys-security
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  #nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 8.134.135.168:8848
+
+  redis:
+    # Redis服务器地址
+    host: 8.134.135.168
+    # Redis服务器端口号
+    port: 6379
+
+
+# slf4j日志配置
+logging:
+  # 配置级别
+  level:
+    root: info
+    #分包配置级别，即不同的目录下可以使用不同的级别
+    com.example.springb_web.controller: debug
+  config: classpath:logback.xml
+
+#mybatis-plus配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:/mapper/*.xml
+
+
+#开放端口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

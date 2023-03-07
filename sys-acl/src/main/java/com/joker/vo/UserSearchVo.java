@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -21,7 +22,9 @@ import java.io.Serializable;
 public class UserSearchVo implements Serializable {
 
     private String name;    //用户名
+    @NotNull(message = "当前页码不能为空")
     private Long page;   //当前页码
+    @NotNull(message = "当前页数量不能为空")
     private Long limit;     //当前页数量
     private String address; //地址
     private String level;  //权限等级

@@ -21,22 +21,15 @@ public class UserVo implements Serializable {
     /**
      * ID
      */
-    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 姓名
      */
     private String name;
-    /**
-     * 昵称
-     */
-    private String nickName;
+
     /**
      * 手机号
      */
     private String phone;
-    /**
-     * 微信用户唯一标识
-     */
-    private String openid;
+
 }

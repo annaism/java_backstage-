@@ -9,8 +9,16 @@ package com.joker.constant;
  */
 public enum ConstantException {
 
+    HeadPicExceptionReturn("上传失败，请稍后再试",21110),
     DeleetNoSelectError("请选择需要删除的记录",21111),
-    ParameterErrorError("参数异常",21112)
+    ParameterErrorError("参数异常",21112),
+
+    GlobalExceptionReturn("系统异常，请联系管理员",00000),
+    ExceptionReturn("未知异常，请联系管理员",00001),
+
+    AlgorithmMismatchExceptionReturn("非法TOKEN,请重新登录",50008),
+    SignatureVerificationExceptionReturn("非法TOKEN,请重新登录",50008),
+    TokenExpiredExceptionReturn("TOKEN不存在或过期，请重新登录",50014),
 
 
     ;

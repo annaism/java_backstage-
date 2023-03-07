@@ -4,34 +4,38 @@ server:
 spring:
   application:
     name: sys-gateway
+
   #nacos
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 8.134.135.168:8848
     gateway:
       routes:
         - id: sys_acl_route
           uri: lb://sys-acl
           predicates:
-            - Path=/api/user/**,/user/**
+            - Path=/api/user/**,/api/acl/**
 
         - id: sys_epidemic_prevention_route
           uri: lb://sys-epidemic-prevention
           predicates:
-            - Path=/api/disinfect/**,/api/reporting/**
+            - Path=/api/disinfect/**,/api/reporting/**,/api/residents/**
 
         - id: sys_daily_management_route
           uri: lb://sys-daily-management
           predicates:
             - Path=/api/daily/**
 
+        - id: sys-security
+          uri: lb://sys-security
+          predicates:
+            - Path=/api/all/user/**
+
         - id: sys_material_route
           uri: lb://sys-material
           predicates:
             - Path=/api/material/**,/api/materialtype/**,/api/order/**,/api/orderevaluate/**,/api/selfuse/**
-
-
 
 
 

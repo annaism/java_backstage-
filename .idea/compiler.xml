@@ -10,6 +10,7 @@
         <module name="sys-daily-management" />
         <module name="sys-gateway" />
         <module name="sys-acl" />
+        <module name="sys-security" />
         <module name="sys-common" />
         <module name="sys-epidemic-prevention" />
       </profile>
@@ -22,6 +23,7 @@
       <module name="sys-epidemic-prevention" options="-parameters" />
       <module name="sys-gateway" options="-parameters" />
       <module name="sys-material" options="-parameters" />
+      <module name="sys-security" options="-parameters" />
     </option>
   </component>
 </project>

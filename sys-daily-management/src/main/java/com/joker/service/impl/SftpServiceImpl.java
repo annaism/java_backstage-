@@ -134,7 +134,7 @@ public class SftpServiceImpl implements ISftpService {
         Session session = jSchAutoConfiguration.getSession();
         // 安全文件传输协议
         ChannelSftp sftp = (ChannelSftp) session.openChannel("sftp");
-        sftp.connect();
+        sftp.connect(100000);
         return sftp;
     }
 

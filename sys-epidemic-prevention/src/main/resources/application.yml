@@ -13,7 +13,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 8.134.135.168:8848
   #数据库连接
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -35,6 +35,12 @@ spring:
     testOnBorrow: false
     testOnReturn: false
     poolPreparedStatements: true
+
+  redis:
+    # Redis服务器地址
+    host: 8.134.135.168
+    # Redis服务器端口号
+    port: 6379
 
 
 # slf4j日志配置
